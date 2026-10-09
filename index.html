@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Донер Бакинский — доставка в Экибастузе</title>
+<meta name="description" content="Донер Бакинский в Экибастузе: донеры, бургеры, лодочки, пицца, закуски. Халяль. Доставка. Заказ через WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fff8ee;
+    --card: #ffffff;
+    --text: #2a1a12;
+    --muted: #7d6a5d;
+    --accent: #d9381e;
+    --accent-d: #b52b14;
+    --gold: #f4b03c;
+    --line: #efe0cc;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { scroll-behavior: smooth; scroll-padding-top: 118px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.5;
+    padding-bottom: 90px;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(255,248,238,.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .top { display: flex; align-items: center; justify-content: space-between; height: 56px; gap: 10px; }
+  .logo { font-family: 'Unbounded', sans-serif; font-weight: 800; font-size: 15px; line-height: 1.1; }
+  .logo span { color: var(--accent); }
+  .top-actions { display: flex; gap: 8px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 999px;
+    font-weight: 600; font-size: 14px;
+    border: 1px solid var(--line); background: var(--card);
+  }
+  .pill.red { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .badge-count {
+    background: var(--gold); color: var(--text);
+    min-width: 20px; height: 20px; border-radius: 10px;
+    display: inline-grid; place-items: center;
+    font-size: 12px; padding: 0 5px;
+  }
+
+  /* Tabs */
+  .tabs { display: flex; gap: 8px; overflow-x: auto; padding: 0 0 10px; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs a {
+    flex: none; padding: 7px 14px; border-radius: 999px;
+    background: var(--card); border: 1px solid var(--line);
+    font-size: 14px; font-weight: 500;
+  }
+  .tabs a.on { background: var(--text); color: #fff; border-color: var(--text); }
+
+  /* Hero */
+  .hero { padding: 36px 0 18px; }
+  .hero h1 {
+    font-family: 'Unbounded', sans-serif; font-weight: 800;
+    font-size: clamp(28px, 7vw, 46px); line-height: 1.1;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p { color: var(--muted); margin: 12px 0 18px; max-width: 520px; font-size: 17px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  .chip {
+    padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    background: #fdeccd; color: #7a4a05;
+  }
+  .hero-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 13px 22px; border-radius: 12px; font-weight: 600; font-size: 16px;
+    transition: transform .12s, background .2s;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.primary:hover { background: var(--accent-d); }
+  .btn.ghost { border: 1.5px solid var(--text); }
+
+  /* Menu */
+  .cat { padding-top: 26px; }
+  .cat h2 { font-family: 'Unbounded', sans-serif; font-size: 22px; margin-bottom: 12px; }
+  .items { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media (max-width: 640px) { .items { grid-template-columns: 1fr; } }
+  .item {
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    overflow: hidden; display: flex; flex-direction: column;
+  }
+  .pic { aspect-ratio: 200 / 130; width: 100%; }
+  .pic svg { width: 100%; height: 100%; display: block; }
+  .item .body { padding: 12px 16px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 12px; flex: 1; }
+  .item h3 { font-size: 16px; font-weight: 600; line-height: 1.3; }
+  .item .w { color: var(--muted); font-size: 13px; margin-top: 2px; }
+  .item .row { display: flex; align-items: center; justify-content: space-between; }
+  .price { font-weight: 700; font-size: 18px; }
+  .add {
+    background: var(--accent); color: #fff; font-weight: 600; font-size: 14px;
+    padding: 9px 18px; border-radius: 10px;
+  }
+  .add:hover { background: var(--accent-d); }
+  .qty { display: inline-flex; align-items: center; gap: 4px; background: #fdeccd; border-radius: 10px; padding: 3px; }
+  .qty button {
+    width: 34px; height: 34px; border-radius: 8px; background: #fff;
+    font-size: 20px; font-weight: 600; line-height: 1;
+  }
+  .qty b { min-width: 28px; text-align: center; }
+  .note { color: var(--muted); font-size: 13px; margin-top: 22px; }
+
+  /* Info */
+  .info { padding: 40px 0 10px; }
+  .info h2 { font-family: 'Unbounded', sans-serif; font-size: 22px; margin-bottom: 14px; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 18px; }
+  @media (max-width: 700px) { .info-grid { grid-template-columns: 1fr; } }
+  .rows { display: flex; flex-direction: column; gap: 14px; }
+  .r small { display: block; color: var(--muted); font-size: 13px; }
+  .r b { font-weight: 600; }
+  .r a b { color: var(--accent); }
+  .map { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); min-height: 280px; background: var(--card); }
+  .map iframe { width: 100%; height: 100%; min-height: 280px; border: 0; display: block; }
+  footer { text-align: center; color: var(--muted); font-size: 13px; padding: 28px 0 8px; }
+
+  /* Cart bar */
+  .cartbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+    transform: translateY(110%); transition: transform .25s;
+  }
+  .cartbar.show { transform: none; }
+  .cartbar button {
+    width: 100%; max-width: 920px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--accent); color: #fff; padding: 15px 20px;
+    border-radius: 14px; font-weight: 700; font-size: 16px;
+    box-shadow: 0 8px 24px rgba(217,56,30,.35);
+  }
+
+  /* Call box */
+  .callbox {
+    position: fixed; left: 16px; right: 16px; top: 70px; max-width: 380px; margin: 0 auto; z-index: 60;
+    background: #fff; border: 1px solid var(--line); border-radius: 18px; padding: 18px;
+    box-shadow: 0 16px 40px rgba(0,0,0,.2);
+    transform: translateY(-20px); opacity: 0; pointer-events: none; transition: .2s;
+  }
+  .callbox.show { transform: none; opacity: 1; pointer-events: auto; }
+  .cb-title { font-weight: 700; }
+  .cb-num { font-family: 'Unbounded', sans-serif; font-size: 22px; color: var(--accent); margin: 6px 0; }
+  .callbox p { color: var(--muted); font-size: 14px; }
+  .cb-btns { display: flex; gap: 8px; margin-top: 12px; }
+  .cb-btns button { flex: 1; padding: 11px; border-radius: 10px; font-weight: 600; background: #f5e6d0; }
+  .cb-btns #copyNum { background: var(--accent); color: #fff; }
+
+  /* Sheet */
+  .overlay {
+    position: fixed; inset: 0; background: rgba(30,15,8,.5); z-index: 40;
+    opacity: 0; pointer-events: none; transition: opacity .2s;
+  }
+  .overlay.show { opacity: 1; pointer-events: auto; }
+  .sheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+    background: var(--bg); border-radius: 22px 22px 0 0;
+    max-height: 92vh; overflow-y: auto;
+    transform: translateY(105%); transition: transform .28s;
+    padding: 18px 16px calc(20px + env(safe-area-inset-bottom));
+    max-width: 640px; margin: 0 auto;
+  }
+  .sheet.show { transform: none; }
+  .sheet-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .sheet-head h2 { font-family: 'Unbounded', sans-serif; font-size: 20px; }
+  .x { width: 36px; height: 36px; border-radius: 50%; background: var(--card); border: 1px solid var(--line); font-size: 18px; }
+  .line { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .line .n { font-weight: 600; font-size: 15px; }
+  .line .s { color: var(--muted); font-size: 13px; }
+  .total { display: flex; justify-content: space-between; font-weight: 700; font-size: 20px; padding: 14px 0 6px; }
+  .hint { color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+  .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: #f5e6d0; padding: 4px; border-radius: 12px; margin: 10px 0 14px; }
+  .seg button { padding: 10px; border-radius: 9px; font-weight: 600; font-size: 14px; }
+  .seg button.on { background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.1); }
+  label { display: block; font-size: 13px; color: var(--muted); margin: 10px 0 4px; }
+  input, textarea {
+    width: 100%; font: inherit; font-size: 16px; padding: 12px 14px;
+    border-radius: 12px; border: 1.5px solid var(--line); background: #fff; color: var(--text);
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--accent); }
+  textarea { resize: vertical; min-height: 64px; }
+  .err { color: var(--accent); font-size: 14px; margin-top: 10px; min-height: 20px; }
+  .send { width: 100%; margin-top: 6px; background: #1fa855; color: #fff; padding: 15px; border-radius: 14px; font-weight: 700; font-size: 17px; }
+  .send:hover { background: #178a45; }
+  .empty { text-align: center; color: var(--muted); padding: 30px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <a href="#top" class="logo">Донер <span>Бакинский</span></a>
+      <div class="top-actions">
+        <a class="pill" href="tel:+77750903658">📞 Позвонить</a>
+        <button class="pill red" id="openCart">🛒 <span class="badge-count" id="hdrCount">0</span></button>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs"></nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <section class="hero">
+      <h1>Донеры, бургеры<br>и пицца <span>с доставкой</span></h1>
+      <p>Экибастуз, ул. Мухтара Ауэзова, 47. Выбирайте блюда, добавляйте в корзину и отправляйте заказ в WhatsApp.</p>
+      <div class="chips">
+        <span class="chip">Халяль</span>
+        <span class="chip">Доставка</span>
+        <span class="chip">Открыто до 01:00</span>
+      </div>
+      <div class="hero-btns">
+        <a class="btn primary" href="#donery">Смотреть меню</a>
+        <a class="btn ghost" href="tel:+77750903658">+7 (775) 090-36-58</a>
+      </div>
+    </section>
+
+    <div id="menu"></div>
+    <p class="note">Цены указаны в тенге (₸). Меню и цены доставки могут отличаться от цен в зале. Изображения блюд условные, это иллюстрации, а не фотографии.</p>
+
+    <section class="info" id="contacts">
+      <h2>Контакты</h2>
+      <div class="info-grid">
+        <div class="rows">
+          <div class="r"><small>Адрес</small><b>Экибастуз, ул. Мухтара Ауэзова, 47</b></div>
+          <div class="r"><small>Режим работы</small><b>Открыто до 01:00</b></div>
+          <div class="r"><small>Телефон</small><a href="tel:+77750903658"><b>+7 (775) 090-36-58</b></a></div>
+          <div class="r"><small>WhatsApp</small><a href="https://wa.me/77750903658" target="_blank" rel="noopener"><b>Написать в WhatsApp</b></a></div>
+          <div class="r"><small>Instagram</small><a href="https://instagram.com/doner_bakinskyi" target="_blank" rel="noopener"><b>@doner_bakinskyi</b></a></div>
+        </div>
+        <div class="map">
+          <iframe src="https://yandex.ru/map-widget/v1/?ll=75.323620%2C51.727327&z=17&pt=75.323620,51.727327,pm2rdm" loading="lazy" title="Донер Бакинский на карте" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+    <footer>© Донер Бакинский, Экибастуз</footer>
+  </div>
+</main>
+
+<div class="callbox" id="callbox" role="dialog" aria-label="Телефон">
+  <div class="cb-title">Позвоните нам</div>
+  <div class="cb-num">+7 (775) 090-36-58</div>
+  <p>Если звонок не открылся автоматически, наберите номер вручную или скопируйте его.</p>
+  <div class="cb-btns"><button id="copyNum">Скопировать номер</button><button id="closeCall">Закрыть</button></div>
+</div>
+
+<div class="cartbar" id="cartbar">
+  <button id="cartbarBtn">
+    <span>🛒 Корзина · <span id="barCount">0</span></span>
+    <span id="barTotal">0 ₸</span>
+  </button>
+</div>
+
+<div class="overlay" id="overlay"></div>
+<div class="sheet" id="sheet" role="dialog" aria-label="Корзина">
+  <div class="sheet-head">
+    <h2>Ваш заказ</h2>
+    <button class="x" id="closeCart" aria-label="Закрыть">✕</button>
+  </div>
+  <div id="cartBody"></div>
+</div>
+
+<script>
+const PHONE = '77750903658';
+
+const MENU = [
+  { id: 'donery', name: 'Донеры', items: [
+    ['Донер куриный классический', 1800, '350 г'],
+    ['Донер куриный классический большой', 2300, '450 г'],
+    ['Донер куриный с сыром', 2000, '350 г'],
+    ['Донер куриный с сыром большой', 2400, '450 г'],
+    ['Донер куриный с халапеньо', 2000, '350 г'],
+    ['Донер куриный с халапеньо большой', 2300, '450 г'],
+    ['Донер Багет', 2200, '350 г'],
+    ['Жареный Донер', 2300, '350 г'],
+  ]},
+  { id: 'burgery', name: 'Бургеры', items: [
+    ['Гамбургер', 2500, '350 г'],
+    ['Гамбургер с двойной котлетой', 2800, '350 г'],
+    ['Чизбургер', 2500, '350 г'],
+    ['Чизбургер с двойной котлетой', 2800, '350 г'],
+    ['Миксбургер с двойной котлетой', 3000, '350 г'],
+  ]},
+  { id: 'lodochki', name: 'Лодочки', items: [
+    ['Лодочка Ассорти (20 см)', 3200, '320 г'],
+    ['Лодочка Грибная (20 см)', 2700, '320 г'],
+    ['Лодочка Куриная (20 см)', 3000, '320 г'],
+    ['Лодочка С рубленым мясом (20 см)', 3200, '320 г'],
+    ['Лодочка С суджуком (20 см)', 2900, '320 г'],
+    ['Лодочка С фаршем (20 см)', 3200, '320 г'],
+    ['Лодочка Сырная (20 см)', 2900, '320 г'],
+    ['Лодочка Овощная (20 см)', 2700, '320 г'],
+  ]},
+  { id: 'pizza', name: 'Пицца', items: [
+    ['Пицца Алматы (30 см)', 3500, '500 г'],
+    ['Пицца Куриная (30 см)', 3500, '500 г'],
+    ['Пицца Маргарита (30 см)', 3500, '500 г'],
+    ['Пицца Пепперони (30 см)', 3500, '500 г'],
+    ['Пицца с фаршем Астана (30 см)', 3500, '500 г'],
+  ]},
+  { id: 'zakuski', name: 'Закуски', items: [
+    ['Картофель фри', 1000, '170 г'],
+    ['Наггетсы M (6 шт.)', 2000, '180 г'],
+    ['Наггетсы L (10 шт.)', 3200, '300 г'],
+    ['Крылышки острые М (5 шт.)', 2000, '150 г'],
+    ['Крылышки острые L (10 шт.)', 3200, '300 г'],
+    ['Лахмаджун без сыра (30 см)', 3200, '270 г'],
+    ['Лахмаджун с сыром (30 см)', 3200, '270 г'],
+  ]},
+  { id: 'goryachee', name: 'Горячие блюда', items: [
+    ['Курица гриль (с лавашем, 2 шт., соусами, 2 шт., и луком)', 7000, '1 кг'],
+  ]},
+  { id: 'napitki', name: 'Напитки', items: [
+    ['Айран', 700, '250 мл'],
+    ['Coca-Cola', 1200, '1 л'],
+    ['Fanta', 1200, '1 л'],
+    ['Sprite', 1200, '1 л'],
+  ]},
+];
+
+// Плоский список с id
+const ITEMS = [];
+MENU.forEach(c => c.items.forEach(([name, price, w]) => ITEMS.push({ id: ITEMS.length, name, price, w })));
+
+const fmt = n => n.toLocaleString('ru-RU') + ' ₸';
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// Корзина: { id: qty }
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem('doner_cart') || '{}') || {}; } catch (e) { cart = {}; }
+// выбросить несуществующие id
+Object.keys(cart).forEach(k => { if (!ITEMS[k] || !(cart[k] > 0)) delete cart[k]; });
+
+let mode = 'delivery';
+let form = { name: '', address: '', comment: '' };
+
+function save() { try { localStorage.setItem('doner_cart', JSON.stringify(cart)); } catch (e) {} }
+const count = () => Object.values(cart).reduce((a, b) => a + b, 0);
+const total = () => Object.entries(cart).reduce((s, [id, q]) => s + ITEMS[id].price * q, 0);
+
+// --- Меню ---
+function renderTabs() {
+  document.getElementById('tabs').innerHTML = MENU.map(c => `<a href="#${c.id}" data-t="${c.id}">${esc(c.name)}</a>`).join('');
+}
+function renderMenu() {
+  let idx = 0;
+  document.getElementById('menu').innerHTML = MENU.map(c => `
+    <section class="cat" id="${c.id}">
+      <h2>${esc(c.name)}</h2>
+      <div class="items">
+        ${c.items.map(() => { const it = ITEMS[idx++]; return `
+          <div class="item">
+            <div class="pic" style="background:${BG[c.id]}">${artFor(it.name)}</div>
+            <div class="body">
+              <div>
+                <h3>${esc(it.name)}</h3>
+                <div class="w">${esc(it.w)}</div>
+              </div>
+              <div class="row">
+                <span class="price">${fmt(it.price)}</span>
+                <span data-ctl="${it.id}"></span>
+              </div>
+            </div>
+          </div>`; }).join('')}
+      </div>
+    </section>`).join('');
+  ITEMS.forEach(it => renderCtl(it.id));
+}
+function renderCtl(id) {
+  const el = document.querySelector(`[data-ctl="${id}"]`);
+  if (!el) return;
+  const q = cart[id] || 0;
+  el.innerHTML = q
+    ? `<span class="qty"><button data-a="dec" data-id="${id}" aria-label="Меньше">−</button><b>${q}</b><button data-a="inc" data-id="${id}" aria-label="Больше">+</button></span>`
+    : `<button class="add" data-a="inc" data-id="${id}">В корзину</button>`;
+}
+
+function change(id, d) {
+  const q = (cart[id] || 0) + d;
+  if (q <= 0) delete cart[id]; else cart[id] = Math.min(q, 50);
+  save();
+  renderCtl(id);
+  updateBars();
+  if (sheetOpen) renderCart();
+}
+
+function updateBars() {
+  const c = count();
+  document.getElementById('hdrCount').textContent = c;
+  document.getElementById('barCount').textContent = c;
+  document.getElementById('barTotal').textContent = fmt(total());
+  document.getElementById('cartbar').classList.toggle('show', c > 0 && !sheetOpen);
+}
+
+// --- Корзина ---
+let sheetOpen = false;
+const sheet = document.getElementById('sheet');
+const overlay = document.getElementById('overlay');
+
+function openCart() { sheetOpen = true; renderCart(); sheet.classList.add('show'); overlay.classList.add('show'); updateBars(); }
+function closeCart() { sheetOpen = false; sheet.classList.remove('show'); overlay.classList.remove('show'); updateBars(); }
+
+function renderCart() {
+  const body = document.getElementById('cartBody');
+  const ids = Object.keys(cart);
+  if (!ids.length) {
+    body.innerHTML = '<div class="empty">Корзина пуста.<br>Добавьте блюда из меню.</div>';
+    return;
+  }
+  body.innerHTML = `
+    ${ids.map(id => { const it = ITEMS[id], q = cart[id]; return `
+      <div class="line">
+        <div>
+          <div class="n">${esc(it.name)}</div>
+          <div class="s">${fmt(it.price)} × ${q} = ${fmt(it.price * q)}</div>
+        </div>
+        <span class="qty"><button data-a="dec" data-id="${id}">−</button><b>${q}</b><button data-a="inc" data-id="${id}">+</button></span>
+      </div>`; }).join('')}
+    <div class="total"><span>Итого</span><span>${fmt(total())}</span></div>
+    <p class="hint">Стоимость доставки и время уточнит оператор в WhatsApp.</p>
+
+    <div class="seg">
+      <button data-mode="delivery" class="${mode === 'delivery' ? 'on' : ''}">Доставка</button>
+      <button data-mode="pickup" class="${mode === 'pickup' ? 'on' : ''}">Самовывоз</button>
+    </div>
+
+    <label for="fName">Ваше имя</label>
+    <input id="fName" autocomplete="name" value="${esc(form.name)}" placeholder="Как к вам обращаться">
+    ${mode === 'delivery' ? `
+    <label for="fAddr">Адрес доставки</label>
+    <input id="fAddr" autocomplete="street-address" value="${esc(form.address)}" placeholder="Улица, дом, квартира">` : ''}
+    <label for="fComm">Комментарий (необязательно)</label>
+    <textarea id="fComm" placeholder="Например: без лука, острый соус">${esc(form.comment)}</textarea>
+
+    <div class="err" id="err"></div>
+    <button class="send" id="send">Заказать в WhatsApp</button>
+  `;
+}
+
+function sendOrder() {
+  const name = document.getElementById('fName').value.trim();
+  const addrEl = document.getElementById('fAddr');
+  const address = addrEl ? addrEl.value.trim() : '';
+  const comment = document.getElementById('fComm').value.trim();
+  form = { name, address: addrEl ? address : form.address, comment };
+  const err = document.getElementById('err');
+  if (!name) { err.textContent = 'Укажите имя.'; return; }
+  if (mode === 'delivery' && !address) { err.textContent = 'Укажите адрес доставки.'; return; }
+
+  const lines = Object.keys(cart).map(id => {
+    const it = ITEMS[id], q = cart[id];
+    return `• ${it.name} × ${q} — ${fmt(it.price * q)}`;
+  });
+  const text = [
+    'Здравствуйте! Хочу сделать заказ:',
+    '',
+    ...lines,
+    '',
+    `Итого: ${fmt(total())}`,
+    `Способ: ${mode === 'delivery' ? 'доставка' : 'самовывоз'}`,
+    mode === 'delivery' ? `Адрес: ${address}` : null,
+    `Имя: ${name}`,
+    comment ? `Комментарий: ${comment}` : null,
+  ].filter(x => x !== null).join('\n');
+
+  const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(text)}`;
+  const w = window.open(url, '_blank');
+  if (!w) window.location.href = url;
+}
+
+// --- События ---
+document.addEventListener('click', e => {
+  const a = e.target.closest('[data-a]');
+  if (a) { change(+a.dataset.id, a.dataset.a === 'inc' ? 1 : -1); return; }
+  const m = e.target.closest('[data-mode]');
+  if (m) {
+    const n = document.getElementById('fName'), c = document.getElementById('fComm'), ad = document.getElementById('fAddr');
+    if (n) form.name = n.value; if (c) form.comment = c.value; if (ad) form.address = ad.value;
+    mode = m.dataset.mode; renderCart(); return;
+  }
+  if (e.target.closest('#send')) sendOrder();
+});
+document.getElementById('openCart').addEventListener('click', openCart);
+document.getElementById('cartbarBtn').addEventListener('click', openCart);
+document.getElementById('closeCart').addEventListener('click', closeCart);
+overlay.addEventListener('click', closeCart);
+
+// ---------- Иллюстрации блюд (условные, нарисованы кодом) ----------
+const BG = { donery: '#fde7c4', burgery: '#ffe1c9', lodochki: '#fbe9c8', pizza: '#ffe3d1', zakuski: '#fff0c9', goryachee: '#fde0cc', napitki: '#e6f1fb' };
+
+const wrapSvg = inner => `<svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><ellipse cx="100" cy="114" rx="66" ry="7" fill="rgba(60,30,10,.13)"/>${inner}</svg>`;
+
+function artDoner(o) {
+  const s = o.big ? 1.15 : 1;
+  const L = o.baguette ? 74 : 62;
+  const bread = o.baguette ? '#e2a85c' : o.fried ? '#cf8d3c' : '#efd5a0';
+  const edge = o.baguette ? '#b9803a' : o.fried ? '#9c6320' : '#c9a35e';
+  let g = `<g transform="translate(100 62) rotate(-12) scale(${s})">`;
+  g += `<rect x="${-L}" y="-24" width="${L + 58}" height="48" rx="24" fill="${bread}" stroke="${edge}" stroke-width="2"/>`;
+  if (o.fried) {
+    g += `<path d="M-44 -20 l10 40 M-24 -22 l10 44 M-4 -22 l10 44 M16 -22 l10 44" stroke="#7a4a14" stroke-width="3" opacity=".55" fill="none"/>`;
+  } else if (o.baguette) {
+    g += `<path d="M-60 -22 q8 -10 16 0 t16 0 t16 0 t16 0 t16 0 t16 0 v6 h-96z" fill="#6dae45"/>`;
+    [[-50, -8], [-30, -13], [-10, -8], [10, -13], [30, -8]].forEach(([x, y]) => { g += `<ellipse cx="${x}" cy="${y}" rx="3" ry="1.6" fill="#fff3d6"/>`; });
+  } else {
+    g += `<path d="M${-L} 0 L12 0 L12 24 L${-L + 24} 24 A24 24 0 0 1 ${-L} 0 Z" fill="#fff" stroke="#e8d3b0" stroke-width="1.5"/>`;
+    g += `<path d="M${-L + 30} 0 v24 M${-L + 46} 0 v24 M${-L + 62} 0 v24" stroke="#d9381e" stroke-width="3" opacity=".8"/>`;
+  }
+  g += `<ellipse cx="58" cy="0" rx="14" ry="24" fill="#d7b06a" stroke="${edge}" stroke-width="2"/>`;
+  g += `<ellipse cx="58" cy="0" rx="11" ry="20" fill="#6dae45"/>`;
+  g += `<ellipse cx="59" cy="-1" rx="8" ry="13" fill="#8b4a28"/>`;
+  g += `<circle cx="57" cy="-12" r="3.5" fill="#e03b2c"/><circle cx="58" cy="12" r="3.5" fill="#e03b2c"/>`;
+  if (o.cheese) g += `<path d="M52 -6 q8 -6 14 0 q2 8 -2 14 q-4 -4 -6 2 q-4 -4 -6 4z" fill="#ffc83a"/>`;
+  if (o.jal) g += `<circle cx="55" cy="-3" r="4" fill="#4f9a2a" stroke="#2f6a14" stroke-width="1.5"/><circle cx="63" cy="5" r="4" fill="#4f9a2a" stroke="#2f6a14" stroke-width="1.5"/>`;
+  return wrapSvg(g + '</g>');
+}
+
+function artBurger(o) {
+  let y = 28;
+  let g = `<g transform="translate(100 ${o.n === 1 ? 64 : 62})">`;
+  g += `<path d="M-50 28 h100 v8 q0 8 -8 8 h-84 q-8 0 -8 -8z" fill="#e0963a"/>`;
+  for (let i = 0; i < o.n; i++) { y -= 13; g += `<rect x="-54" y="${y}" width="108" height="14" rx="7" fill="#6b3a22"/>`; }
+  if (o.cheese) { g += `<path d="M-52 ${y - 4} h104 l-8 9 l-10 -4 l-12 10 l-10 -9 l-16 8 l-14 -9 l-12 6z" fill="#ffc83a"/>`; y -= 5; }
+  g += `<path d="M-54 ${y} q9 -10 18 0 t18 0 t18 0 t18 0 t18 0 t18 0 v6 h-108z" fill="#6dae45"/>`; y -= 4;
+  g += `<rect x="-46" y="${y - 4}" width="92" height="8" rx="4" fill="#e03b2c"/>`; y -= 5;
+  if (o.mix) { [-30, -6, 18, 38].forEach(x => { g += `<circle cx="${x}" cy="${y + 2}" r="4" fill="#8fbf3f" stroke="#5e8a22"/>`; }); }
+  g += `<path d="M-52 ${y} Q-52 ${y - 46} 0 ${y - 46} Q52 ${y - 46} 52 ${y} Z" fill="#e8a24a"/>`;
+  [[-22, -30], [0, -38], [22, -30], [-8, -20], [14, -18], [34, -14], [-36, -14]].forEach(([dx, dy]) => { g += `<ellipse cx="${dx}" cy="${y + dy}" rx="3.2" ry="1.7" fill="#fff3d6"/>`; });
+  return wrapSvg(g + '</g>');
+}
+
+function artBoat(name) {
+  let base, cols;
+  if (/Ассорти/.test(name)) { base = '#f7d46a'; cols = ['#c9382a', '#6dae45', '#8b4a28', '#fff6e0']; }
+  else if (/Грибная/.test(name)) { base = '#f2dca2'; cols = ['#a88a64', '#7b5f3f', '#d9c49a']; }
+  else if (/Куриная/.test(name)) { base = '#f4e6bd'; cols = ['#fbf3dd', '#e9d6a5', '#6dae45']; }
+  else if (/рубленым|фаршем/.test(name)) { base = '#a0532c'; cols = ['#6b3a22', '#8b4a28', '#ffc83a']; }
+  else if (/суджуком/.test(name)) { base = '#ffcf56'; cols = ['#9c2f1f', '#b8432a']; }
+  else if (/Сырная/.test(name)) { base = '#ffcf3f'; cols = ['#ffe58a', '#f7b82a']; }
+  else { base = '#f6dd8a'; cols = ['#e03b2c', '#4f9a2a', '#2e2a26', '#f2a33a']; }
+  const sp = [[-36, -2], [-18, 6], [-2, -10], [16, 4], [34, -4], [-26, -12], [14, -14], [0, 6]];
+  const sud = /суджуком/.test(name);
+  let g = '<g transform="translate(100 64)">';
+  g += `<path d="M-76 0 Q-46 -40 0 -40 Q46 -40 76 0 Q46 32 0 32 Q-46 32 -76 0Z" fill="#d9953f" stroke="#a96a22" stroke-width="2"/>`;
+  g += `<path d="M-62 0 Q-40 -26 0 -26 Q40 -26 62 0 Q40 18 0 18 Q-40 18 -62 0Z" fill="${base}"/>`;
+  sp.forEach(([x, y], i) => { g += `<circle cx="${x}" cy="${y}" r="${sud ? 7 : 5.5}" fill="${cols[i % cols.length]}"/>`; });
+  if (sud) sp.forEach(([x, y]) => { g += `<circle cx="${x - 1.5}" cy="${y - 1.5}" r="1.4" fill="#f6d9b0"/>`; });
+  return wrapSvg(g + '</g>');
+}
+
+function artPizza(name) {
+  const t = /Пепперони/.test(name) ? 'pep' : /Маргарита/.test(name) ? 'mar' : /Куриная/.test(name) ? 'chk' : /Алматы/.test(name) ? 'alm' : 'ast';
+  let g = `<g transform="translate(100 62)"><circle r="54" fill="#dfa04a"/><circle r="47" fill="#f7c95c"/>`;
+  const pts = [[0, 0]];
+  for (let i = 0; i < 7; i++) { const a = i * 2 * Math.PI / 7 + 0.3; pts.push([Math.round(Math.cos(a) * 29), Math.round(Math.sin(a) * 29)]); }
+  pts.forEach(([x, y], i) => {
+    if (t === 'pep') {
+      g += `<circle cx="${x}" cy="${y}" r="8" fill="#c43a2a"/><circle cx="${x - 2}" cy="${y - 2}" r="1.5" fill="#8f2418"/><circle cx="${x + 2}" cy="${y + 2}" r="1.5" fill="#8f2418"/>`;
+    } else if (t === 'mar') {
+      if (i % 2) g += `<circle cx="${x}" cy="${y}" r="8" fill="#fffaf0" stroke="#efe2c4"/>`;
+      else g += `<circle cx="${x}" cy="${y}" r="8" fill="#e0392b"/><ellipse cx="${x + 3}" cy="${y - 3}" rx="5" ry="2.5" fill="#3f9a3a" transform="rotate(-30 ${x + 3} ${y - 3})"/>`;
+    } else if (t === 'chk') {
+      g += `<rect x="${x - 7}" y="${y - 4.5}" width="14" height="9" rx="3" fill="#f6ead0" stroke="#d9c08a"/>`;
+      if (i % 2) g += `<circle cx="${x + 4}" cy="${y + 4}" r="4" fill="none" stroke="#4f9a2a" stroke-width="2.5"/>`;
+    } else if (t === 'alm') {
+      const m = i % 3;
+      if (m === 0) g += `<circle cx="${x}" cy="${y}" r="7" fill="#b83a2a"/>`;
+      else if (m === 1) g += `<circle cx="${x}" cy="${y}" r="5" fill="#2e2a26"/><circle cx="${x}" cy="${y}" r="2" fill="#f7c95c"/>`;
+      else g += `<circle cx="${x}" cy="${y}" r="5.5" fill="none" stroke="#4f9a2a" stroke-width="3"/>`;
+    } else {
+      [[-5, -3], [4, -4], [-2, 5], [6, 3]].forEach(([dx, dy]) => { g += `<circle cx="${x + dx}" cy="${y + dy}" r="3" fill="#7a3e22"/>`; });
+      if (i % 2) g += `<circle cx="${x}" cy="${y}" r="2" fill="#4f9a2a"/>`;
+    }
+  });
+  return wrapSvg(g + '</g>');
+}
+
+function artFries() {
+  let g = '<g transform="translate(100 58)">';
+  [[-26, 2, -16], [-14, -2, -8], [-2, -4, 0], [10, -2, 8], [22, 2, 16], [-20, 4, -11], [16, 4, 11]].forEach(([x, y, r]) => {
+    g += `<rect x="-3.5" y="-46" width="7" height="52" rx="2" fill="#ffd04a" stroke="#e6a91d" transform="translate(${x} ${y}) rotate(${r})"/>`;
+  });
+  g += `<path d="M-34 0 L34 0 L26 48 L-26 48 Z" fill="#d9381e"/><path d="M-31 14 L31 14 L29 26 L-29 26Z" fill="#fff" opacity=".9"/>`;
+  return wrapSvg(g + '</g>');
+}
+
+function artNuggets(n) {
+  const pos = n === 5 ? [[-44, 10], [-16, -8], [14, 6], [44, -4], [0, 26]] : [[-30, 8], [2, -6], [34, 10]];
+  let g = '<g transform="translate(96 58)">';
+  pos.forEach(([x, y], i) => {
+    g += `<g transform="translate(${x} ${y}) rotate(${i * 37})"><path d="M-14 -8 q4 -10 16 -8 q14 2 12 14 q-2 12 -14 10 q-14 -2 -14 -16z" fill="#d99a3c" stroke="#a96a22" stroke-width="2"/><circle cx="-3" cy="-4" r="1.4" fill="#a96a22"/><circle cx="5" cy="1" r="1.4" fill="#a96a22"/></g>`;
+  });
+  g += `<ellipse cx="62" cy="40" rx="18" ry="8" fill="#fff" stroke="#ddd"/><ellipse cx="62" cy="38" rx="14" ry="5" fill="#c4301c"/>`;
+  return wrapSvg(g + '</g>');
+}
+
+function artWings(n) {
+  const pos = n === 4 ? [[-40, 0, -25], [-10, 18, 5], [20, -4, -10], [48, 14, 25]] : [[-26, 6, -20], [26, 12, 20]];
+  let g = '';
+  pos.forEach(([x, y, r]) => {
+    g += `<g transform="translate(${100 + x} ${58 + y}) rotate(${r})"><ellipse rx="20" ry="13" fill="#c4501d"/><ellipse cx="-4" cy="-4" rx="10" ry="4" fill="#dd6a2d" opacity=".7"/><rect x="16" y="-4" width="18" height="8" rx="3" fill="#f6ead0"/><circle cx="35" cy="-3" r="4" fill="#f6ead0"/><circle cx="35" cy="3" r="4" fill="#f6ead0"/></g>`;
+  });
+  g += `<path d="M150 96 q10 -4 16 4 q-8 6 -16 -4z" fill="#d62a1a"/><path d="M150 96 q-3 -4 -6 -3" stroke="#3f9a3a" stroke-width="2" fill="none"/>`;
+  return wrapSvg(g);
+}
+
+function artLahmajun(cheese) {
+  let g = '<g transform="translate(96 66)"><ellipse rx="64" ry="38" fill="#d9a85a"/><ellipse rx="58" ry="33" fill="#b24c2b"/>';
+  [[-30, -8], [-10, 10], [12, -12], [30, 6], [-4, -2], [22, 18], [-38, 8], [40, -10], [-18, -18]].forEach(([x, y], i) => {
+    g += `<circle cx="${x}" cy="${y}" r="${i % 2 ? 4 : 3}" fill="${i % 3 ? '#8f3a1f' : '#6dae45'}"/>`;
+  });
+  if (cheese) g += `<path d="M-30 -2 q8 -10 20 -4 q10 4 6 12 q-10 6 -26 -8z M10 8 q12 -6 22 2 q2 8 -8 10 q-12 0 -14 -12z" fill="#ffc83a" opacity=".92"/>`;
+  g += `<circle cx="76" cy="30" r="12" fill="#ffe36a" stroke="#e6c030" stroke-width="2"/><path d="M76 20 v20 M66 30 h20" stroke="#e6c030" stroke-width="1.5"/>`;
+  return wrapSvg(g + '</g>');
+}
+
+function artChicken() {
+  let g = `<ellipse cx="100" cy="90" rx="72" ry="18" fill="#efd5a0" stroke="#c9a35e" stroke-width="2"/>`;
+  g += `<ellipse cx="74" cy="86" rx="13" ry="8" fill="#b8651f"/><circle cx="60" cy="86" r="4" fill="#f6ead0"/>`;
+  g += `<ellipse cx="126" cy="86" rx="13" ry="8" fill="#b8651f"/><circle cx="140" cy="86" r="4" fill="#f6ead0"/>`;
+  g += `<ellipse cx="100" cy="62" rx="42" ry="27" fill="#c9772c" stroke="#9c5517" stroke-width="2"/>`;
+  g += `<ellipse cx="90" cy="52" rx="26" ry="11" fill="#e19a45" opacity=".85"/>`;
+  g += `<circle cx="168" cy="96" r="7" fill="#fff" stroke="#ddd"/><circle cx="168" cy="95" r="4.5" fill="#c4301c"/>`;
+  return wrapSvg(g);
+}
+
+function artAyran() {
+  let g = `<path d="M72 30 L128 30 L120 104 L80 104Z" fill="#fff" stroke="#cfd8e3" stroke-width="3"/>`;
+  g += `<ellipse cx="100" cy="30" rx="28" ry="6" fill="#f4f7fb" stroke="#cfd8e3" stroke-width="2"/>`;
+  g += `<path d="M76 58 L124 58 L121 80 L79 80Z" fill="#3b82c4"/>`;
+  [[88, 66], [100, 72], [112, 66]].forEach(([x, y]) => { g += `<circle cx="${x}" cy="${y}" r="3" fill="#fff"/>`; });
+  return wrapSvg(g);
+}
+
+function artBottle(name) {
+  const [body, cap] = /Coca/i.test(name) ? ['#4a2314', '#d9381e'] : /Fanta/i.test(name) ? ['#f58a1f', '#f58a1f'] : ['#a8e0b6', '#2e9c4b'];
+  let g = `<rect x="91" y="6" width="18" height="9" rx="2" fill="${cap}"/>`;
+  g += `<path d="M93 15 h14 v14 q0 6 8 14 q8 10 8 22 v38 q0 8 -8 8 h-22 q-8 0 -8 -8 v-38 q0 -12 8 -22 q8 -8 8 -14z" fill="${body}" stroke="rgba(0,0,0,.2)" stroke-width="1.5"/>`;
+  g += `<rect x="84" y="62" width="32" height="26" fill="#fff" opacity=".88"/>`;
+  g += `<rect x="86" y="42" width="4" height="48" rx="2" fill="#fff" opacity=".3"/>`;
+  return wrapSvg(g);
+}
+
+function artFor(name) {
+  if (/Багет/.test(name)) return artDoner({ baguette: 1 });
+  if (/Жареный/.test(name)) return artDoner({ fried: 1 });
+  if (/Донер/.test(name)) return artDoner({ big: /большой/.test(name), cheese: /сыром/.test(name), jal: /халапеньо/.test(name) });
+  if (/бургер/i.test(name)) return artBurger({ n: /двойной/.test(name) ? 2 : 1, cheese: /Чиз|Микс/.test(name), mix: /Микс/.test(name) });
+  if (/Лодочка/.test(name)) return artBoat(name);
+  if (/Пицца/.test(name)) return artPizza(name);
+  if (/Картофель/.test(name)) return artFries();
+  if (/Наггетсы/.test(name)) return artNuggets(/L/.test(name) ? 5 : 3);
+  if (/Крылышки/.test(name)) return artWings(/L/.test(name) ? 4 : 2);
+  if (/Лахмаджун/.test(name)) return artLahmajun(/с сыром/.test(name));
+  if (/Курица/.test(name)) return artChicken();
+  if (/Айран/.test(name)) return artAyran();
+  return artBottle(name);
+}
+
+// ---------- Кнопка «Позвонить» ----------
+// Ссылка tel: открывает набор номера на телефоне. Если страница открыта там, где
+// звонки не поддерживаются (компьютер, окно предпросмотра), через секунду
+// показывается окно с номером и кнопкой «Скопировать».
+const callbox = document.getElementById('callbox');
+document.addEventListener('click', e => {
+  const t = e.target.closest('a[href^="tel:"]');
+  if (!t) return;
+  let left = false;
+  const mark = () => { left = true; };
+  window.addEventListener('blur', mark, { once: true });
+  document.addEventListener('visibilitychange', mark, { once: true });
+  setTimeout(() => {
+    window.removeEventListener('blur', mark);
+    document.removeEventListener('visibilitychange', mark);
+    if (!left) callbox.classList.add('show');
+  }, 1000);
+});
+document.getElementById('closeCall').addEventListener('click', () => callbox.classList.remove('show'));
+document.getElementById('copyNum').addEventListener('click', async () => {
+  const b = document.getElementById('copyNum');
+  try { await navigator.clipboard.writeText('+77750903658'); b.textContent = 'Скопировано ✓'; }
+  catch (e) { b.textContent = '+77750903658'; }
+});
+
+
+// подсветка вкладки при прокрутке
+const tabEls = () => [...document.querySelectorAll('#tabs a')];
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      tabEls().forEach(t => t.classList.toggle('on', t.dataset.t === en.target.id));
+      const on = document.querySelector('#tabs a.on');
+      if (on) on.scrollIntoView({ block: 'nearest', inline: 'center' });
+    }
+  });
+}, { rootMargin: '-130px 0px -65% 0px' });
+
+renderTabs();
+renderMenu();
+document.querySelectorAll('.cat').forEach(s => io.observe(s));
+updateBars();
+</script>
+</body>
+</html>
